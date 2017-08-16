@@ -18,5 +18,12 @@
             android:layout_height="wrap_content"
             android:text="@={viewModel.textField}"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{String.format(`input=%s`, viewModel.textField)}"
+            android:textSize="14sp"/>
+
     </LinearLayout>
 </layout>
