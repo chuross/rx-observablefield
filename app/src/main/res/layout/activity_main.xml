@@ -45,6 +45,13 @@
             android:text="@{viewModel.upperStringTextField}"
             android:textSize="14sp"/>
 
+        <Button
+            android:id="@+id/go_sub_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="go to sub screen"/>
+
     </LinearLayout>
 </layout>
 
