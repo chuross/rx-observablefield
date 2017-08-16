@@ -4,8 +4,9 @@ import android.databinding.ObservableField
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposables
 
-object DatabindingUtils {
+object ObservableUtils {
 
+    @JvmStatic
     fun <T> toObservable(field: ObservableField<T>): Observable<T> {
         return Observable.create { emitter ->
             field.get()?.let { emitter.onNext(it) }

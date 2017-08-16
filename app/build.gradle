@@ -3,6 +3,11 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
+
+    dataBinding {
+        enabled true
+    }
+
     defaultConfig {
         applicationId "com.github.chuross.rxobservablefield"
         minSdkVersion 15
@@ -23,5 +28,5 @@ def v = rootProject.ext.versions
 dependencies {
     compile project(':rxobservablefield')
     compile "com.android.support:appcompat-v7:$v.supportLib"
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile "io.reactivex.rxjava2:rxjava:$v.rxJava"
 }
