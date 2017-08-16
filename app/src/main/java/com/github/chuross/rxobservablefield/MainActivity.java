@@ -3,6 +3,8 @@ package com.github.chuross.rxobservablefield;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import io.reactivex.Observable;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
