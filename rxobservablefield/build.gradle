@@ -1,8 +1,17 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
+
+    dataBinding {
+        enabled true
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 
     defaultConfig {
         minSdkVersion 15
@@ -21,11 +30,10 @@ android {
     }
 }
 
+def v = rootProject.ext.versions
+
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:26.+'
-    testCompile 'junit:junit:4.12'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$v.kotlin"
+    compile "io.reactivex.rxjava2:rxjava:$v.rxJava"
+    compile "com.android.support:appcompat-v7:$v.supportLib"
 }
