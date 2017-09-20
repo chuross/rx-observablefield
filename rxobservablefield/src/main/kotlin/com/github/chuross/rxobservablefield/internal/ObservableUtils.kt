@@ -1,11 +1,11 @@
-package com.github.chuross.rxobservablefield
+package com.github.chuross.rxobservablefield.internal
 
 import android.databinding.ObservableField
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposables
 import android.databinding.Observable.OnPropertyChangedCallback
 
-object ObservableUtils {
+internal object ObservableUtils {
 
     @JvmStatic
     fun <T> toObservable(field: ObservableField<T>): Observable<T> {
