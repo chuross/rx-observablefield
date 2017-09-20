@@ -1,9 +1,6 @@
 package com.github.chuross.rxobservablefield;
 
 
-import android.databinding.ObservableField;
-
-import io.reactivex.Observable;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 

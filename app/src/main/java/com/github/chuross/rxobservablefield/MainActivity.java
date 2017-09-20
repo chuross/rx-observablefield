@@ -8,8 +8,6 @@ import android.view.View;
 
 import com.github.chuross.rxobservablefield.databinding.ActivityMainBinding;
 
-import io.reactivex.Observable;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override

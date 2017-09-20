@@ -1,1 +1,1 @@
-include ':app', ':rxobservablefield'
+include ':app', ':rxobservablefield', ':rxobservablefield-kotlin'

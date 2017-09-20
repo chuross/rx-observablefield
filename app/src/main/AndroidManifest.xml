@@ -17,6 +17,7 @@
         </activity>
 
         <activity android:name=".SubActivity"/>
+
     </application>
 
 </manifest>

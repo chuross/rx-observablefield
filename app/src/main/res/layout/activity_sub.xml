@@ -25,5 +25,12 @@
             android:text="@{String.format(`input=%s`, viewModel.textField)}"
             android:textSize="14sp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{String.format(`input=%s`, viewModel.textLength)}"
+            android:textSize="14sp"/>
+
     </LinearLayout>
 </layout>
