@@ -3,6 +3,7 @@ package com.github.chuross.rxobservablefield
 import android.databinding.ObservableField
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposables
+import android.databinding.Observable.OnPropertyChangedCallback
 
 object ObservableUtils {
 
@@ -11,7 +12,7 @@ object ObservableUtils {
         return Observable.create { emitter ->
             field.get()?.let { emitter.onNext(it) }
 
-            val callback = object : android.databinding.Observable.OnPropertyChangedCallback() {
+            val callback = object : OnPropertyChangedCallback() {
                 override fun onPropertyChanged(sender: android.databinding.Observable?, propertyId: Int) {
                     emitter.onNext(field.get())
                 }
