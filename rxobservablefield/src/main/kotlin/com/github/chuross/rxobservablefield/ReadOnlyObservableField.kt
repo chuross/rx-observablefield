@@ -5,7 +5,7 @@ import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import android.databinding.Observable.OnPropertyChangedCallback
 
-class ReadOnlyRxObservableField<T>(source: Observable<T>) : ObservableField<T>() {
+class ReadOnlyObservableField<T>(source: Observable<T>) : ObservableField<T>() {
 
     @Transient private val source: Observable<T> = source.doOnNext { super.set(it) }.share()
     @Transient private val callbacks: MutableMap<OnPropertyChangedCallback, Disposable> = mutableMapOf()

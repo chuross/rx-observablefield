@@ -4,7 +4,7 @@ import android.databinding.ObservableField
 import com.github.chuross.rxobservablefield.internal.ObservableUtils
 import io.reactivex.Observable
 
-class RxObservableField<T> : ObservableField<T> {
+class ObservableField<T> : ObservableField<T> {
 
     constructor(): super()
 

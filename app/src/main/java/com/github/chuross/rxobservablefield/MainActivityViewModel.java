@@ -6,14 +6,14 @@ import io.reactivex.functions.Function;
 
 public class MainActivityViewModel {
 
-    public RxObservableField<String> textField = new RxObservableField<>("");
-    public ReadOnlyRxObservableField<Integer> lengthField = new ReadOnlyRxObservableField<>(textField.toObservable().map(new Function<String, Integer>() {
+    public ObservableField<String> textField = new ObservableField<>("");
+    public ReadOnlyObservableField<Integer> lengthField = new ReadOnlyObservableField<>(textField.toObservable().map(new Function<String, Integer>() {
         @Override
         public Integer apply(@NonNull String text) throws Exception {
             return text.length();
         }
     }));
-    public ReadOnlyRxObservableField<String> upperStringTextField = new ReadOnlyRxObservableField<>(textField.toObservable().map(new Function<String, String>() {
+    public ReadOnlyObservableField<String> upperStringTextField = new ReadOnlyObservableField<>(textField.toObservable().map(new Function<String, String>() {
         @Override
         public String apply(@NonNull String text) throws Exception {
             return text.toUpperCase();
