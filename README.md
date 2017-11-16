@@ -18,6 +18,13 @@ dependencies {
 }
 ```
 
+3. (optional) add the dependency for kotlin
+```
+dependencies {
+    compile 'com.github.chuross.rx-observablefield:rx-observablefield-kotlin:x.x.x'
+}
+```
+
 ## kotlin
 ```
 val hogeField = ObservableField<String>()
