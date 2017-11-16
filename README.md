@@ -18,14 +18,15 @@ dependencies {
 }
 ```
 
-3. (optional) add the dependency for kotlin
+3. (optional) add the dependency for kotlin: [![](https://jitpack.io/v/chuross/rx-observablefield.svg)](https://jitpack.io/#chuross/rx-observablefield)
 ```
 dependencies {
     compile 'com.github.chuross.rx-observablefield:rx-observablefield-kotlin:x.x.x'
 }
 ```
 
-## kotlin
+## Usage
+### kotlin
 ```
 val hogeField = ObservableField<String>()
 
