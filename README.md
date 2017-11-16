@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/chuross/rx-observablefield.svg)](https://jitpack.io/#chuross/rx-observablefield)
+
 # Rx ObservableField
 
 DataBinding converter library for RxJava2.
