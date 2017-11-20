@@ -16,14 +16,14 @@ repositories {
 2. add the dependency latest version: [![](https://jitpack.io/v/chuross/rx-observablefield.svg)](https://jitpack.io/#chuross/rx-observablefield)
 ```
 dependencies {
-    compile 'com.github.chuross.rx-observablefield:rx-observablefield:x.x.x'
+    compile 'com.github.chuross.rx-observablefield:rxobservablefield:x.x.x'
 }
 ```
 
 3. (optional) add the dependency for kotlin: [![](https://jitpack.io/v/chuross/rx-observablefield.svg)](https://jitpack.io/#chuross/rx-observablefield)
 ```
 dependencies {
-    compile 'com.github.chuross.rx-observablefield:rx-observablefield-kotlin:x.x.x'
+    compile 'com.github.chuross.rx-observablefield:rxobservablefield-kotlin:x.x.x'
 }
 ```
 
