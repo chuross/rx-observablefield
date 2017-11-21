@@ -9,6 +9,7 @@ class ReadOnlyObservableField<T>(source: Observable<T>) : ObservableField<T>() {
 
     @Transient private val source: Observable<T> = source.doOnNext { super.set(it) }.share()
     @Transient private val callbacks: MutableMap<OnPropertyChangedCallback, Disposable> = mutableMapOf()
+    val rx: Observable<T> get() = source
 
     @Synchronized
     override fun addOnPropertyChangedCallback(callback: OnPropertyChangedCallback) {

@@ -8,12 +8,11 @@ class ObservableField<T> : ObservableField<T> {
 
     @Transient
     private var observable: Observable<T>? = null
+    val rx: Observable<T> get() = observable ?: newObservable().also { observable = it }
 
     constructor(): super()
 
     constructor(default: T): super(default)
 
-    fun toObservable(): Observable<T> = observable ?: newObservable().also { observable = it }
-
-    private fun newObservable(): Observable<T> = ObservableUtils.toObservable(this).serialize()
+    private fun newObservable(): Observable<T> = ObservableUtils.toObservable(this).share()
 }
