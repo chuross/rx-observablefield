@@ -15,7 +15,7 @@ class SubActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val textField = intent.getSerializableExtra(EXTRA_KEY_TEXT_FIELD) as ObservableField<String>
+        val textField = intent.getSerializableExtra(EXTRA_KEY_TEXT_FIELD) as RxObservableField<String>
 
         val binding = DataBindingUtil.setContentView<ActivitySubBinding>(this, R.layout.activity_sub)
         binding.viewModel = SubActivityViewModel(textField)

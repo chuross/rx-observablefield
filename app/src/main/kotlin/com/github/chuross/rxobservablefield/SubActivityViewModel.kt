@@ -2,7 +2,7 @@ package com.github.chuross.rxobservablefield
 
 import com.github.chuross.rxobservablefield.extension.toObservableField
 
-class SubActivityViewModel(val textField: ObservableField<String>) {
+class SubActivityViewModel(val textField: RxObservableField<String>) {
 
-    val textLength: ReadOnlyObservableField<Int> = textField.rx.map { it.length }.toObservableField()
+    val textLength: ReadOnlyRxObservableField<Int> = textField.rx.map { it.length }.toObservableField()
 }

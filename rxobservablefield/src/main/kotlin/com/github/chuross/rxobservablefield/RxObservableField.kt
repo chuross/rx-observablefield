@@ -4,7 +4,7 @@ import android.databinding.ObservableField
 import com.github.chuross.rxobservablefield.internal.ObservableUtils
 import io.reactivex.Observable
 
-class ObservableField<T> : ObservableField<T> {
+class RxObservableField<T> : ObservableField<T> {
 
     @Transient
     private var observable: Observable<T>? = null
