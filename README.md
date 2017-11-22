@@ -30,8 +30,8 @@ dependencies {
 ## Usage
 ### kotlin
 ```
-val hogeField = ObservableField<String>()
+val hogeField = RxObservableField<String>()
 
 // ObservableField -> Rx#Observable + Operators -> ReadOnlyObservableField
-val hogeLengthField = hogeField.rx.map { it.length }.filter { it > 10 }.toObservableField()
+val hogeLengthField: ReadOnlyRxObservableField<Int> = hogeField.rx.map { it.length }.filter { it > 10 }.toObservableField()
 ```
