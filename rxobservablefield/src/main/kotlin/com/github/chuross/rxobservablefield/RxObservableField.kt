@@ -8,7 +8,7 @@ class RxObservableField<T> : ObservableField<T> {
 
     @Transient
     private var observable: Observable<T>? = null
-    val rx: Observable<T> get() = observable ?: newObservable().also { observable = it }
+    val rx: Observable<T> get() = observable ?: ObservableUtils.toObservable(this).share().also { observable = it }
 
     constructor(): super()
 
@@ -16,5 +16,4 @@ class RxObservableField<T> : ObservableField<T> {
 
     override fun get(): T? = super.get()
 
-    private fun newObservable(): Observable<T> = ObservableUtils.toObservable(this).share()
 }
