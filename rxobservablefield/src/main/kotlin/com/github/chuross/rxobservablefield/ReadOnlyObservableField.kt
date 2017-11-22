@@ -23,6 +23,11 @@ class ReadOnlyObservableField<T>(source: Observable<T>) : ObservableField<T>() {
         super.removeOnPropertyChangedCallback(callback)
     }
 
+
+    override fun get(): T = super.get()!!
+
+    fun getOrNull(): T? = super.get()
+
     @Deprecated("This class is ReadOnly!", ReplaceWith("not call"))
     override fun set(value: T) {
         throw UnsupportedOperationException()
