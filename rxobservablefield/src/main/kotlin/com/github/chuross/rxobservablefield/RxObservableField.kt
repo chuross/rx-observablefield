@@ -14,9 +14,7 @@ class RxObservableField<T> : ObservableField<T> {
 
     constructor(default: T): super(default)
 
-    override fun get(): T = super.get()!!
-
-    fun getOrNull(): T? = super.get()
+    override fun get(): T? = super.get()
 
     private fun newObservable(): Observable<T> = ObservableUtils.toObservable(this).share()
 }
