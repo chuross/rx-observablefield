@@ -38,6 +38,9 @@ dependencies {
     compile project(':rxobservablefield-kotlin')
     kapt "com.android.databinding:compiler:$v.databinding"
     compile "com.android.support:appcompat-v7:$v.supportLib"
+    compile "com.android.support:recyclerview-v7:$v.supportLib"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$v.kotlin"
     compile "io.reactivex.rxjava2:rxjava:$v.rxJava"
+    compile "com.github.chuross.recyclerview-adapters:recyclerview-adapters:$v.recyclerviewAdapters"
+    compile "com.github.chuross.recyclerview-adapters:recyclerview-adapters-databinding:$v.recyclerviewAdapters"
 }
