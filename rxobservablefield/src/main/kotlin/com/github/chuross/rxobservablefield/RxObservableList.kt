@@ -8,6 +8,6 @@ class RxObservableList<T> : ObservableArrayList<T>() {
 
     @Transient
     private var observable: Observable<List<T>>? = null
-    val rx: Observable<List<T>> get() = observable ?: ObservableUtils.toObservable(this).share().also { observable = it }
+    val rx: Observable<List<T>> get() = observable ?: ObservableUtils.toObservable(this).also { observable = it }
 
 }
