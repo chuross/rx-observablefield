@@ -5,7 +5,6 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.github.chuross.rxobservablefield.databinding.ActivitySubBinding
-import io.reactivex.BackpressureStrategy
 
 class SubActivity : Activity() {
 

@@ -10,6 +10,8 @@ class SubActivityViewModel(val textField: RxObservableField<String>) {
     private val disposables: CompositeDisposable = CompositeDisposable()
 
     init {
+        textField.valueFilter = { it != "test" }
+
         textLength.rx
                 .filter { it > 0 }
                 .filter { it % 5 == 0 }
