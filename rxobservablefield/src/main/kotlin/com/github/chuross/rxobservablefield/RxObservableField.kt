@@ -7,7 +7,7 @@ import io.reactivex.Observable
 class RxObservableField<T> : ObservableField<T> {
 
     @Transient private var observable: Observable<T>? = null
-    @Transient var valueFilter: ((T) -> Boolean)? = null
+    @Transient private var valueFilter: ((T) -> Boolean)? = null
     val rx: Observable<T> get() = observable ?: ObservableUtils.toObservable(this).also { observable = it }
 
     constructor(): super()
@@ -20,6 +20,10 @@ class RxObservableField<T> : ObservableField<T> {
         valueFilter?.let {
             if (it.invoke(value)) super.set(value)
         } ?: super.set(value)
+    }
+
+    fun setValueFilter(valueFilter: ((T) -> Boolean)): RxObservableField<T> {
+        return also { it.valueFilter = valueFilter }
     }
 
 }
