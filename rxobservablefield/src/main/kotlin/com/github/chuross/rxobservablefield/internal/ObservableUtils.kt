@@ -28,7 +28,7 @@ internal object ObservableUtils {
     @JvmStatic
     fun <T> toObservable(list: ObservableList<T>): Observable<List<T>> {
         return Observable.create { emitter ->
-            list.takeIf { it.isNotEmpty() }?.let { emitter.onNext(it) }
+            emitter.onNext(list.toList())
 
             val callback = object : ObservableList.OnListChangedCallback<ObservableList<T>>() {
                 override fun onItemRangeChanged(sender: ObservableList<T>?, positionStart: Int, itemCount: Int) {
