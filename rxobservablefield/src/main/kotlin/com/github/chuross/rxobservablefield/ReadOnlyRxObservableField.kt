@@ -26,6 +26,8 @@ class ReadOnlyRxObservableField<T>(source: Observable<T>) : ObservableField<T>()
 
     override fun get(): T? = super.get()
 
+    fun or(default: T): T = get() ?: default
+
     @Deprecated("This class is ReadOnly!", ReplaceWith("not call"))
     override fun set(value: T) {
         throw UnsupportedOperationException()

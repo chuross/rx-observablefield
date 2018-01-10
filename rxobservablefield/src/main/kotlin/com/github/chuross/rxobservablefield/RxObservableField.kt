@@ -16,6 +16,8 @@ class RxObservableField<T> : ObservableField<T> {
 
     override fun get(): T? = super.get()
 
+    fun or(default: T): T = get() ?: default
+
     override fun set(value: T) {
         valueFilter?.let {
             if (it.invoke(value)) super.set(value)
