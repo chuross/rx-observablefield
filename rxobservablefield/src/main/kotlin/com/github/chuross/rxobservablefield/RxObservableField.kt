@@ -8,11 +8,16 @@ class RxObservableField<T> : ObservableField<T> {
 
     @Transient private var observable: Observable<T>? = null
     @Transient private var valueFilter: ((T) -> Boolean)? = null
+    internal val ignoreLatestOnSubscribe: Boolean
     val rx: Observable<T> get() = observable ?: ObservableUtils.toObservable(this).also { observable = it }
 
-    constructor(): super()
+    constructor(): super() {
+        ignoreLatestOnSubscribe = false
+    }
 
-    constructor(default: T): super(default)
+    constructor(default: T, ignoreLatestOnSubscribe: Boolean = false): super(default) {
+        this.ignoreLatestOnSubscribe = ignoreLatestOnSubscribe
+    }
 
     override fun get(): T? = super.get()
 

@@ -5,17 +5,19 @@ import io.reactivex.Observable
 import io.reactivex.disposables.Disposables
 import android.databinding.Observable.OnPropertyChangedCallback
 import android.databinding.ObservableList
+import com.github.chuross.rxobservablefield.RxObservableField
+import com.github.chuross.rxobservablefield.RxObservableList
 
 internal object ObservableUtils {
 
     @JvmStatic
-    fun <T> toObservable(field: ObservableField<T>): Observable<T> {
+    fun <T> toObservable(field: RxObservableField<T>): Observable<T> {
         return Observable.create { emitter ->
-            field.get()?.let { emitter.onNext(it) }
+            if (!field.ignoreLatestOnSubscribe) field.get()?.let { emitter.onNext(it) }
 
             val callback = object : OnPropertyChangedCallback() {
                 override fun onPropertyChanged(sender: android.databinding.Observable?, propertyId: Int) {
-                    emitter.onNext(field.get())
+                    emitter.onNext(field.get()!!)
                 }
             }
 
@@ -26,7 +28,7 @@ internal object ObservableUtils {
     }
 
     @JvmStatic
-    fun <T> toObservable(list: ObservableList<T>): Observable<List<T>> {
+    fun <T> toObservable(list: RxObservableList<T>): Observable<List<T>> {
         return Observable.create { emitter ->
             emitter.onNext(list.toList())
 
