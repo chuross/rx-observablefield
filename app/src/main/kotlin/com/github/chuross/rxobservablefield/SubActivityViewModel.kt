@@ -15,7 +15,7 @@ class SubActivityViewModel(textField: RxObservableField<String>) {
                 .filter { it > 0 }
                 .filter { it % 5 == 0 }
                 .subscribe({
-                    addItem(textField.get() ?: "")
+                    addItem(textField.or(""))
                 }).also { disposables.add(it) }
     }
 
