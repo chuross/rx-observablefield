@@ -2,16 +2,15 @@ package com.github.chuross.rxobservablefield
 
 import android.databinding.ObservableField
 import io.reactivex.Observable
-import io.reactivex.disposables.Disposable
+import io.reactivex.disposables.CompositeDisposable
 
-class ReadOnlyRxObservableField<T>(source: Observable<T>) : ObservableField<T>(), Disposable {
+class ReadOnlyRxObservableField<T>(source: Observable<T>, disposables: CompositeDisposable) : ObservableField<T>() {
 
-    @Transient private val source: Observable<T> = source.filter { !isDisposed }.doOnNext { super.set(it) }.share()
-    var disposable: Disposable? = null
+    @Transient private val source: Observable<T> = source.doOnNext { super.set(it) }.share()
     val rx: Observable<T> get() = source
 
     init {
-        disposable = this.source.subscribe()
+        disposables.add(this.source.subscribe())
     }
 
     override fun get(): T? = super.get()
@@ -21,11 +20,5 @@ class ReadOnlyRxObservableField<T>(source: Observable<T>) : ObservableField<T>()
     @Deprecated("This class is ReadOnly!", ReplaceWith("not call"))
     override fun set(value: T) {
         throw UnsupportedOperationException()
-    }
-
-    override fun isDisposed(): Boolean = disposable == null
-
-    override fun dispose() {
-        disposable?.dispose()?.also { disposable = null }
     }
 }
