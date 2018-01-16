@@ -8,6 +8,8 @@ import com.github.chuross.rxobservablefield.databinding.ActivitySubBinding
 
 class SubActivity : Activity() {
 
+    var viewModel: SubActivityViewModel? = null
+
     companion object {
         @JvmField
         val EXTRA_KEY_TEXT_FIELD = "extra_key_text_field"
@@ -17,7 +19,9 @@ class SubActivity : Activity() {
         super.onCreate(savedInstanceState)
 
         val textField = intent.getSerializableExtra(EXTRA_KEY_TEXT_FIELD) as RxObservableField<String>
-        val viewModel = SubActivityViewModel(textField)
+        viewModel = SubActivityViewModel(textField)
+
+        val viewModel = viewModel ?: return
 
         val binding = DataBindingUtil.setContentView<ActivitySubBinding>(this, R.layout.activity_sub)
         binding.viewModel = viewModel
@@ -26,5 +30,10 @@ class SubActivity : Activity() {
 
         binding.list.layoutManager = LinearLayoutManager(this)
         binding.list.adapter = TextItemAdapter(this, viewModel.textItems)
+    }
+
+    override fun onDestroy() {
+        viewModel?.destroy()
+        super.onDestroy()
     }
 }

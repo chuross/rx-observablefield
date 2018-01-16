@@ -5,10 +5,10 @@ import io.reactivex.disposables.CompositeDisposable
 
 class SubActivityViewModel(textField: RxObservableField<String>) {
 
-    val textField: RxObservableField<String> = textField.setValueFilter { it != "test" }
-    val textLength: ReadOnlyRxObservableField<Int> = textField.rx.map { it.length }.toObservableField()
-    val textItems: RxObservableList<String> = RxObservableList()
     private val disposables: CompositeDisposable = CompositeDisposable()
+    val textField: RxObservableField<String> = textField.setValueFilter { it != "test" }
+    val textLength: ReadOnlyRxObservableField<Int> = textField.rx.map { it.length }.toObservableField().also { disposables.add(it) }
+    val textItems: RxObservableList<String> = RxObservableList()
 
     init {
         textLength.rx
@@ -25,5 +25,9 @@ class SubActivityViewModel(textField: RxObservableField<String>) {
 
     fun removeLastItem() {
         textItems.takeIf { textItems.isNotEmpty() }?.let { it.removeAt(it.lastIndex) }
+    }
+
+    fun destroy() {
+        disposables.dispose()
     }
 }

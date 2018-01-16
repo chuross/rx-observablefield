@@ -2,10 +2,12 @@ package com.github.chuross.rxobservablefield;
 
 
 import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Function;
 
 public class MainActivityViewModel {
 
+    private CompositeDisposable disposables = new CompositeDisposable();
     public RxObservableField<String> textField = new RxObservableField<>("");
     public ReadOnlyRxObservableField<Integer> lengthField = new ReadOnlyRxObservableField<>(textField.getRx().map(new Function<String, Integer>() {
         @Override
@@ -19,5 +21,13 @@ public class MainActivityViewModel {
             return text.toUpperCase();
         }
     }));
+
+    MainActivityViewModel() {
+        disposables.addAll(lengthField, upperStringTextField);
+    }
+
+    public void destroy() {
+        disposables.dispose();
+    }
 
 }

@@ -10,11 +10,13 @@ import com.github.chuross.rxobservablefield.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    private MainActivityViewModel viewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final MainActivityViewModel viewModel = new MainActivityViewModel();
+        viewModel = new MainActivityViewModel();
 
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setViewModel(viewModel);
@@ -27,5 +29,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (viewModel != null) viewModel.destroy();
+        super.onDestroy();
     }
 }

@@ -35,6 +35,8 @@ val hogeField = RxObservableField<String>()
 // ObservableField -> Rx#Observable + Operators -> ReadOnlyRxObservableField
 val hogeLengthField = hogeField.rx.map { it.length }.filter { it > 10 }.toObservableField() // ReadOnly!
 
+hogeLengthField.dispose() // ReadOnlyProperty need dispose on destroy
+
 
 // get value
 hogeField.get() // String?
