@@ -30,12 +30,14 @@ dependencies {
 ## Usage
 ### kotlin
 ```
+val disposables = CompositeDisposables() // RxJava2#CompositeDisposables
+
+...
+
 val hogeField = RxObservableField<String>()
 
 // ObservableField -> Rx#Observable + Operators -> ReadOnlyRxObservableField
-val hogeLengthField = hogeField.rx.map { it.length }.filter { it > 10 }.toObservableField() // ReadOnly!
-
-hogeLengthField.dispose() // ReadOnlyProperty need dispose on destroy
+val hogeLengthField = hogeField.rx.map { it.length }.filter { it > 10 }.toObservableField(disposables) // ReadOnly!
 
 
 // get value
