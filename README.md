@@ -33,7 +33,7 @@ dependencies {
 val hogeField = RxObservableField<String>()
 
 // ObservableField -> Rx#Observable + Operators -> ReadOnlyRxObservableField
-val hogeLengthField = hogeField.rx.map { it.length }.filter { it > 10 }.toObservableField() // RedOnly!
+val hogeLengthField = hogeField.rx.map { it.length }.filter { it > 10 }.toObservableField() // ReadOnly!
 
 
 // get value
