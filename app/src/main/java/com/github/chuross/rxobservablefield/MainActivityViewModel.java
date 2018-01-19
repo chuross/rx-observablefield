@@ -14,13 +14,13 @@ public class MainActivityViewModel {
         public Integer apply(@NonNull String text) throws Exception {
             return text.length();
         }
-    }), disposables);
+    }), disposables, null);
     public ReadOnlyRxObservableField<String> upperStringTextField = new ReadOnlyRxObservableField<>(textField.getRx().map(new Function<String, String>() {
         @Override
         public String apply(@NonNull String text) throws Exception {
             return text.toUpperCase();
         }
-    }), disposables);
+    }), disposables, null);
 
     public void destroy() {
         disposables.dispose();

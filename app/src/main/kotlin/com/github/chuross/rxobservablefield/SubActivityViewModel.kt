@@ -7,6 +7,7 @@ class SubActivityViewModel(textField: RxObservableField<String>) {
 
     private val disposables: CompositeDisposable = CompositeDisposable()
     val textField: RxObservableField<String> = textField.setValueFilter { it != "test" }
+    val isValidText: ReadOnlyRxObservableField<Boolean> = textField.rx.map { it.isNotEmpty() }.toObservableField(disposables, default = false)
     val textLength: ReadOnlyRxObservableField<Int> = textField.rx.map { it.length }.toObservableField(disposables)
     val textItems: RxObservableList<String> = RxObservableList()
 

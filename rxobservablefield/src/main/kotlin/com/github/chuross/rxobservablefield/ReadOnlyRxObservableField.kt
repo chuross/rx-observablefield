@@ -4,12 +4,17 @@ import android.databinding.ObservableField
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 
-class ReadOnlyRxObservableField<T>(private val source: Observable<T>, disposables: CompositeDisposable) : ObservableField<T>() {
+class ReadOnlyRxObservableField<T>(private val source: Observable<T>, disposables: CompositeDisposable, default: T? = null) : ObservableField<T>() {
 
     val rx: Observable<T> get() = source
 
     init {
-        disposables.add(this.source.doOnNext { super.set(it) }.subscribe())
+        disposables.add(
+                when {
+                    default != null -> Observable.concat(Observable.just(default), this.source.doOnNext { super.set(it) }).subscribe()
+                    else -> this.source.doOnNext { super.set(it) }.subscribe()
+                }
+        )
     }
 
     override fun get(): T? = super.get()
