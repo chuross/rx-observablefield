@@ -38,7 +38,7 @@ val hogeField = RxObservableField<String>()
 
 // ObservableField -> Rx#Observable + Operators -> ReadOnlyRxObservableField
 val hogeLengthField = hogeField.rx.map { it.length }.filter { it > 10 }.toObservableField(disposables) // ReadOnly!
-// val hogeLengthField = hogeField.rx.map { it.length }.filter { it > 10 }.toObservableField(disposables, default = 0) // ReadOnly!(with default value)
+val hogeLengthField = hogeField.rx.map { it.length }.filter { it > 10 }.toObservableField(disposables, default = 0) // ReadOnly!(with default value)
 
 
 // get value
