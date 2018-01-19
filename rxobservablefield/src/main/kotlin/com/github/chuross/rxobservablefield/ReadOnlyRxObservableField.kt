@@ -6,15 +6,10 @@ import io.reactivex.disposables.CompositeDisposable
 
 class ReadOnlyRxObservableField<T>(private val source: Observable<T>, disposables: CompositeDisposable, default: T? = null) : ObservableField<T>() {
 
-    val rx: Observable<T> get() = source
+    val rx: Observable<T> = default?.let { Observable.concat(Observable.just(default), source) } ?: source
 
     init {
-        disposables.add(
-                when {
-                    default != null -> Observable.concat(Observable.just(default), this.source.doOnNext { super.set(it) }).subscribe()
-                    else -> this.source.doOnNext { super.set(it) }.subscribe()
-                }
-        )
+        disposables.add(rx.doOnNext { super.set(it) }.subscribe())
     }
 
     override fun get(): T? = super.get()
